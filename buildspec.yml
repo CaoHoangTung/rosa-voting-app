@@ -16,8 +16,6 @@ phases:
     commands:
       - echo Hello World
       - echo Testing codebuild flow
-  pre_build:
-    commands:
       - apt-get install wget curl
       - wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz
       - tar xzf openshift-client-linux.tar.gz
