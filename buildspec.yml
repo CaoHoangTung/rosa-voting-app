@@ -1,3 +1,15 @@
+# version: 0.2
+
+# phases:
+#   pre_build:
+#     commands:
+#       - echo Hello World
+#       - echo Testing codebuild flow
+#   post_build:
+#     commands:
+#       - echo Test successful!
+
+
 version: 0.2
 
 phases:
@@ -5,22 +17,19 @@ phases:
     commands:
       - echo Hello World
       - echo Testing codebuild flow
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - apt-get install wget curl
+      - wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz
+      - tar xzf openshift-client-linux.tar.gz
+      - cp oc /usr/local/bin
+  build:
+    commands:
+      - echo Building the 3 apps...          
+      - bash build-all.sh
   post_build:
     commands:
       - echo Test successful!
       - echo Another pipeline has been triggered
-  # pre_build:
-  #   commands:
-  #     - echo Logging in to Amazon ECR...
-  #     - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-  #     - apt-get install wget curl
-  #     - wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz
-  #     - tar xzf openshift-client-linux.tar.gz
-  #     - cp oc /usr/local/bin
-  # build:
-  #   commands:
-  #     - echo Building the 3 apps...          
-  #     - bash build-all.sh
-  # post_build:
-  #   commands:
-  #     - echo Done!!!

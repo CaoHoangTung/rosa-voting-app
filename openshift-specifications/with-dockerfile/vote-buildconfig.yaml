@@ -5,23 +5,44 @@ metadata:
   labels:
     app: voting-app
 spec:
-  triggers:
-  - type: Generic
-    generic:
-      secretReference: 
-        name: voting-app-webhook-secret
-        key: WebHookSecretKey
   strategy:
     type: Docker
   source:
     type: Git
     git:
-      uri: "https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/openshift-voting-app"
+      uri: "https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/rosa-voting-app"
       ref: master
     contextDir: voting-app/vote
-    sourceSecret:
-      name: codecommitsecret
   output:
     to:
       kind: ImageStreamTag
       name: vote:latest
+
+
+# kind: BuildConfig
+# apiVersion: build.openshift.io/v1
+# metadata:
+#   name: vote
+#   labels:
+#     app: voting-app
+# spec:
+#   triggers:
+#   - type: Generic
+#     generic:
+#       secretReference: 
+#         name: voting-app-webhook-secret
+#         key: WebHookSecretKey
+#   strategy:
+#     type: Docker
+#   source:
+#     type: Git
+#     git:
+#       uri: "https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/rosa-voting-app"
+#       ref: master
+#     contextDir: voting-app/vote
+#     sourceSecret:
+#       name: codecommitsecret
+#   output:
+#     to:
+#       kind: ImageStreamTag
+#       name: vote:latest
