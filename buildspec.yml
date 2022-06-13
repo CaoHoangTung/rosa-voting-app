@@ -1,8 +1,13 @@
 version: 0.2
 
 phases:
-  test_build:
-    - echo Hello World
+  pre_build:
+    commands:
+      - echo Hello World
+      - echo Testing codebuild flow
+  post_build:
+    commands:
+    - echo Test successful!
   # pre_build:
   #   commands:
   #     - echo Logging in to Amazon ECR...
