@@ -9,7 +9,6 @@
 #     commands:
 #       - echo Test successful!
 
-
 version: 0.2
 
 phases:
