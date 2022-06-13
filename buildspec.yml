@@ -7,8 +7,8 @@ phases:
       - echo Testing codebuild flow
   post_build:
     commands:
-    - echo Test successful!
-		- echo Another pipeline has been triggered
+      - echo Test successful!
+      - echo Another pipeline has been triggered
   # pre_build:
   #   commands:
   #     - echo Logging in to Amazon ECR...
