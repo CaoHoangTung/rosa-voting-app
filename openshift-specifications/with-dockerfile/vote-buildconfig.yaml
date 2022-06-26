@@ -10,7 +10,7 @@ spec:
   source:
     type: Git
     git:
-      uri: "https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/rosa-voting-app"
+      uri: "https://github.com/CaoHoangTung/rosa-voting-app"
       ref: master
     contextDir: voting-app/vote
   output:
