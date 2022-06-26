@@ -8,22 +8,3 @@ phases:
   post_build:
     commands:
       - echo Test successful!
-
-# version: 0.2
-# phases:
-#   pre_build:
-#     commands:
-#       - echo Hello World
-#       - echo Testing codebuild flow
-#       - apt-get install wget curl
-#       - wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz
-#       - tar xzf openshift-client-linux.tar.gz
-#       - cp oc /usr/local/bin
-#   build:
-#     commands:
-#       - echo Building the 3 apps...          
-#       - bash build-all.sh
-#   post_build:
-#     commands:
-#       - echo Test successful!
-#       - echo Another pipeline has been triggered
